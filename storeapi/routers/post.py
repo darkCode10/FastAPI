@@ -10,7 +10,7 @@ def find_post(post_id):
 
 @router.post("/post",response_model=UserPost,status_code=201)
 async def create_post(post:UserPostIn):
-    data=post.dict()
+    data=post.model_dump()
     last_record_id=len(post_table)
     new_post={**data,'id':last_record_id}
     post_table[last_record_id]=new_post
