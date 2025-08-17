@@ -27,7 +27,7 @@ async def create_post(comment:CommentIn):
     if not post:
         raise HTTPException(status_code=404,detail="Post not found")
     
-    data=comment.dict()
+    data=comment.model_dump()
     last_record_id=len(comment_table)
     new_comment={**data,'id':last_record_id}
     comment_table[last_record_id]=new_comment
